@@ -83,10 +83,10 @@ vector<Disk>& generate_disks(int window_height, int window_width){
   int shortest_axis = fmin (window_height, window_width);
   int disk_diameter = fmin((sqrt(window_height*window_width/(MAX_NUM_OF_DISKS*2))), shortest_axis);
   Disk * disk;
-  // randomly generate a sphere within object space
+  // randomly generate a disk within object space
   // check for overlap, if no overlap then add to list.
   // if overlap, repeat until reaching number of TRY_LIMIT
-  // stops when there are num_spheres in list
+  // stops when num_disks is reached in the list
   while (try_count++ < try_limit){
     disk = new Disk(WINDOW_WIDTH, WINDOW_HEIGHT, disk_diameter/2);
     if (is_disk_valid(*disk, *valid_disks)){
@@ -147,14 +147,12 @@ int main(int argc, char ** argv) {
   glutInitWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
   glutInitWindowPosition(200, 100);
   glutCreateWindow("Shawn Yang's 718-Project1");
-  glClearColor(0.2, 0.2, 0.2, 0.2);
+  glClearColor(0.1, 0.1, 0.1, 0.1);
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
   gluOrtho2D(0.0, WINDOW_WIDTH, 0.0, WINDOW_HEIGHT );
   glutDisplayFunc(display);
   glutMainLoop();
   
-  
-  std::cout << "Hello, World!\n";
   return 0;
 }
