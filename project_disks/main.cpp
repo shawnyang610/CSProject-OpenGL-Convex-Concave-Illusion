@@ -9,7 +9,7 @@
 #include <vector>
 #include <ctime>
 using namespace std;
-
+// parameters can be changed for desired window size and number of disks
 int WINDOW_HEIGHT=600;
 int WINDOW_WIDTH=800;
 int MIN_NUM_OF_DISKS = 5;
@@ -80,6 +80,8 @@ vector<Disk>& generate_disks(int window_height, int window_width){
   int try_count=0;
   int num_disks =MIN_NUM_OF_DISKS + rand() % (MAX_NUM_OF_DISKS-MIN_NUM_OF_DISKS+1);
   vector<Disk> *valid_disks = new vector<Disk>;
+  // decide the diameter of the disks, the area of the window is 2 times the area of
+  // all the disks together, and the diameter must be smaller than the shortest axis
   int shortest_axis = fmin (window_height, window_width);
   int disk_diameter = fmin((sqrt(window_height*window_width/(MAX_NUM_OF_DISKS*2))), shortest_axis);
   Disk * disk;
